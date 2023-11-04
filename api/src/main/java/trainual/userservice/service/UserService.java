@@ -33,22 +33,24 @@ public class UserService {
 
     public void updateUserNickname(List<String> feedbacks, Integer userId) throws IOException {
         var generatedNickname = chatGptService.generateNickname(feedbacks);
-        var userData = userDataRepository.findById(Integer.valueOf(userId));
-        userData.get().setNickname(generatedNickname);
-        userDataRepository.saveAndFlush(userData.get());
+        var userData = userDataRepository.findById(Integer.valueOf(userId)).get();
+        userData.setNickname(generatedNickname);
+        userDataRepository.saveAndFlush(userData);
     }
 
     public void addRewardPoints(Integer userId, Integer points) {
-        //TODO
+        var userData = userDataRepository.findById(Integer.valueOf(userId)).get();
+        var currentPoints = userData.getRewardPointsAmount();
+        userData.setRewardPointsAmount(currentPoints + points);
+        userDataRepository.saveAndFlush(userData);
     }
-
 
     public void saveNewUserIfNotExist(Integer userId) {
         if (!userDataRepository.existsById(userId)) {
             var userData = new UserData();
             userData.setUserId(userId);
             userData.setRewardPointsAmount(0);
-            userData.setRewardPointsToSend(0);
+            userData.setRewardPointsToSend(30);
             userDataRepository.saveAndFlush(userData);
         }
     }
