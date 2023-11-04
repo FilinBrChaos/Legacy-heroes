@@ -41,7 +41,7 @@
 					"response": []
 				},
 				{
-					"name": "Get all badges Copy",
+					"name": "Get badge",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
