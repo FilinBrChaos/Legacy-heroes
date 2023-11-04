@@ -9,5 +9,5 @@ import org.antlr.v4.runtime.misc.NotNull;
 public class ReviewRequestDto {
 
     @NotNull
-    public String description;
+    private String description;
 }

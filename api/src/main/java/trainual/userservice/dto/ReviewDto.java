@@ -9,11 +9,11 @@ import lombok.NoArgsConstructor;
 public class ReviewDto {
 
     @JsonProperty("id")
-    public Long id;
+    private Long id;
 
     @JsonProperty("userId")
-    public Integer userId;
+    private Integer userId;
 
     @JsonProperty("description")
-    public String description;
+    private String description;
 }

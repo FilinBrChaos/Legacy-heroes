@@ -13,11 +13,11 @@ public class Review {
     @Id
     @Column(name = "review_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long id;
+    private Long id;
 
     @Column(name = "user_id")
-    public Integer userId;
+    private Integer userId;
 
     @Column(name = "description")
-    public String description;
+    private String description;
 }
