@@ -1,0 +1,226 @@
+{
+	"info": {
+		"_postman_id": "ea93a0fb-cbe3-4d67-b3e8-32b6fdcdc27c",
+		"name": "user-service-hackaton",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7030260"
+	},
+	"item": [
+		{
+			"name": "badges",
+			"item": [
+				{
+					"name": "Get all badges",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": 12,\n    \"fromUserId\": 1,\n    \"comment\": \"You're awesome developer\",\n    \"badgeId\": 1,\n    \"rewardPoints\": 15\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlLocal}}/v1/badge/all",
+							"host": [
+								"{{urlLocal}}"
+							],
+							"path": [
+								"v1",
+								"badge",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all badges Copy",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": 12,\n    \"fromUserId\": 1,\n    \"comment\": \"You're awesome developer\",\n    \"badgeId\": 1,\n    \"rewardPoints\": 15\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/v1/badge/all",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"badge",
+								"all"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "feedbacks",
+			"item": [
+				{
+					"name": "Get feedback by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlLocal}}/v1/feedback/:feedbackId",
+							"host": [
+								"{{urlLocal}}"
+							],
+							"path": [
+								"v1",
+								"feedback",
+								":feedbackId"
+							],
+							"variable": [
+								{
+									"key": "feedbackId",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Put feedback",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": 21,\n    \"fromUserId\": 2,\n    \"comment\": \"Just regular developer\",\n    \"badgeId\": 1,\n    \"rewardPoints\": 15\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlLocal}}/v1/feedback/",
+							"host": [
+								"{{urlLocal}}"
+							],
+							"path": [
+								"v1",
+								"feedback",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get user feedbacks",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlLocal}}/v1/feedback/user/:userId",
+							"host": [
+								"{{urlLocal}}"
+							],
+							"path": [
+								"v1",
+								"feedback",
+								"user",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "13"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Get user data",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userId\": 12,\n    \"fromUserId\": 1,\n    \"comment\": \"You're awesome developer\",\n    \"badgeId\": 1,\n    \"rewardPoints\": 15\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{urlLocal}}/v1/user/:userId",
+					"host": [
+						"{{urlLocal}}"
+					],
+					"path": [
+						"v1",
+						"user",
+						":userId"
+					],
+					"variable": [
+						{
+							"key": "userId",
+							"value": "21"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "urlLocal",
+			"value": "localhost:8080",
+			"type": "string"
+		}
+	]
+}
