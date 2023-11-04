@@ -18,22 +18,34 @@ import java.util.stream.Collectors;
 public class FeedbackService {
 
     @Autowired
-    FeedbackRepository feedbackRepository;
+    private FeedbackRepository feedbackRepository;
     @Autowired
-    FeedbackMapper feedbackMapper;
+    private FeedbackMapper feedbackMapper;
+    @Autowired
+    private BadgeService badgeService;
+    @Autowired
+    private UserNicknameService userNicknameService;
 
     public List<FeedbackDto> getUserFeedbacks(String userId) {
         return feedbackRepository.findByUserId(Long.valueOf(userId)).stream()
-                .map(feedbackMapper::toFeedbackDto)
+                .map(feedback -> feedbackMapper.toFeedbackDto(feedback, getBadgeUrl(feedback.getBadgeId())))
                 .collect(Collectors.toList());
     }
 
     public FeedbackDto getFeedback(String feedbackId) {
-        return feedbackMapper.toFeedbackDto(feedbackRepository.getReferenceById(Long.valueOf(feedbackId)));
+        var feedback = feedbackRepository.getReferenceById(Long.valueOf(feedbackId));
+        return feedbackMapper.toFeedbackDto(feedback, getBadgeUrl(feedback.getBadgeId()));
     }
 
     public FeedbackDto saveFeedback(FeedbackRequestDto feedbackRequestDto) {
-        var review = feedbackMapper.toFeedbackModel(feedbackRequestDto);
-        return feedbackMapper.toFeedbackDto(feedbackRepository.saveAndFlush(review));
+        var feedbackModel = feedbackMapper.toFeedbackModel(feedbackRequestDto);
+        var feedback =  feedbackMapper.toFeedbackDto(feedbackRepository.saveAndFlush(feedbackModel),
+                getBadgeUrl(feedbackModel.getBadgeId()));
+        userNicknameService.generateUserNickname(feedback.getUserId());
+        return feedback;
+    }
+
+    private String getBadgeUrl(Long badgeId) {
+        return badgeService.getBadgeUrl(badgeId);
     }
 }

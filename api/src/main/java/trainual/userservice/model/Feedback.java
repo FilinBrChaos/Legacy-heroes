@@ -9,12 +9,12 @@ import java.util.Date;
 
 
 @Data
-@Entity(name = "review")
+@Entity(name = "feedback")
 @NoArgsConstructor
 public class Feedback {
 
     @Id
-    @Column(name = "review_id")
+    @Column(name = "feedback_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -27,11 +27,11 @@ public class Feedback {
     @Column(name = "comment")
     private String comment;
 
-    @Column(name = "badgeUrl")
-    private String badgeUrl;
+    @Column(name = "badge_id")
+    private Long badgeId;
 
-    @Column(name = "score")
-    private Integer score;
+    @Column(name = "reward_points")
+    private Integer rewardPoints;
 
     @Column(name = "create_date", updatable = false)
     @CreationTimestamp

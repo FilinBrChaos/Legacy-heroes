@@ -10,7 +10,7 @@ import trainual.userservice.service.FeedbackService;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/v1/feedback/")
+@RequestMapping(value = "/v1/feedback")
 public class FeedbackController {
 
     @Autowired

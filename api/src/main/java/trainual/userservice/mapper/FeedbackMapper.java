@@ -10,7 +10,8 @@ import trainual.userservice.model.Feedback;
 @Mapper(componentModel = "spring", collectionMappingStrategy = CollectionMappingStrategy.ADDER_PREFERRED)
 public interface FeedbackMapper {
 
-    FeedbackDto toFeedbackDto(Feedback feedback);
+    @Mapping(source = "badgeUrl", target = "badgeUrl")
+    FeedbackDto toFeedbackDto(Feedback feedback, String badgeUrl);
 
     Feedback toFeedbackModel(FeedbackRequestDto feedbackRequestDto);
 }

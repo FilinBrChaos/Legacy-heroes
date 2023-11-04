@@ -25,8 +25,8 @@ public class FeedbackDto {
     @JsonProperty("badgeUrl")
     private String badgeUrl;
 
-    @JsonProperty("score")
-    private Integer score;
+    @JsonProperty("rewardPoints")
+    private Integer rewardPoints;
 
     private Date createDate;
 }

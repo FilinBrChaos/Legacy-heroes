@@ -20,9 +20,9 @@ public class FeedbackRequestDto {
     @JsonProperty("comment")
     private String comment;
 
-    @JsonProperty("badgeUrl")
-    private String badgeUrl;
+    @JsonProperty("badgeId")
+    private Long badgeId;
 
-    @JsonProperty("score")
-    private Integer score;
+    @JsonProperty("rewardPoints")
+    private Integer rewardPoints;
 }
