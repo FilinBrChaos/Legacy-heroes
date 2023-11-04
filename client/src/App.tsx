@@ -1,11 +1,24 @@
-import Header from './components/Header';
-import MainContent from 'components/MainContent';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { Root } from './components/Root';
+import RewardsPage from "./pages/RewardsPage";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Root />,
+    loader: () => { return '' },
+  },
+  {
+    path: "/rewards",
+    element: <RewardsPage />,
+    loader: () => { return '' },
+  },
+]);
 
 function App() {
   return (
     <>
-      <Header />
-      <MainContent />
+      <RouterProvider router={router} />
     </>
   );
 }
