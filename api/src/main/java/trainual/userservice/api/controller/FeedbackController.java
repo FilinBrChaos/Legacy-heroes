@@ -29,7 +29,7 @@ public class FeedbackController {
     }
 
     @PutMapping("/")
-    public ResponseEntity<FeedbackDto> putReviewForUser(@RequestBody FeedbackRequestDto requestDto) {
+    public ResponseEntity<FeedbackDto> putFeedback(@RequestBody FeedbackRequestDto requestDto) {
         var feedback = feedbackService.saveFeedback(requestDto);
         return ResponseEntity.ok(feedback);
     }

@@ -7,18 +7,18 @@ import lombok.NoArgsConstructor;
 @Data
 @Entity(name = "user_nickname")
 @NoArgsConstructor
-public class UserGeneratedNickname {
+public class UserData {
 
     @Id
-    @Column(name = "feedback_id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
     @Column(name = "user_id")
     private Integer userId;
 
     @Column(name = "nickname")
     private String nickname;
 
+    @Column(name="reward_points_amount")
+    private Integer rewardPointsAmount;
 
+    @Column(name="amount_to_send")
+    private Integer rewardPointsToSend;
 }

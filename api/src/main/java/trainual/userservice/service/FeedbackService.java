@@ -24,7 +24,7 @@ public class FeedbackService {
     @Autowired
     private BadgeService badgeService;
     @Autowired
-    private UserNicknameService userNicknameService;
+    private UserService userService;
 
     public List<FeedbackDto> getUserFeedbacks(String userId) {
         return feedbackRepository.findByUserId(Long.valueOf(userId)).stream()
@@ -41,7 +41,9 @@ public class FeedbackService {
         var feedbackModel = feedbackMapper.toFeedbackModel(feedbackRequestDto);
         var feedback =  feedbackMapper.toFeedbackDto(feedbackRepository.saveAndFlush(feedbackModel),
                 getBadgeUrl(feedbackModel.getBadgeId()));
-        userNicknameService.generateUserNickname(feedback.getUserId());
+        userService.saveNewUserIfNotExist(feedback.getUserId());
+        userService.generateUserNickname(feedback.getUserId());
+        userService.addRewardPoints(feedback.getUserId(), feedback.getRewardPoints());
         return feedback;
     }
 
