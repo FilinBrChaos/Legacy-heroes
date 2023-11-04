@@ -19,3 +19,8 @@ logging:
         org.hibernate: error
         org.springframework: INFO
         trainual.userservice: INFO
+
+chat.gpt:
+    url: https://api.openai.com/v1/chat
+    token: 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
+    model: gpt-3.5-turbo-0301

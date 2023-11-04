@@ -9,6 +9,7 @@ import trainual.userservice.dto.FeedbackRequestDto;
 import trainual.userservice.mapper.FeedbackMapper;
 import trainual.userservice.repository.FeedbackRepository;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -37,14 +38,20 @@ public class FeedbackService {
         return feedbackMapper.toFeedbackDto(feedback, getBadgeUrl(feedback.getBadgeId()));
     }
 
-    public FeedbackDto saveFeedback(FeedbackRequestDto feedbackRequestDto) {
+    public FeedbackDto saveFeedback(FeedbackRequestDto feedbackRequestDto) throws IOException {
         var feedbackModel = feedbackMapper.toFeedbackModel(feedbackRequestDto);
-        var feedback =  feedbackMapper.toFeedbackDto(feedbackRepository.saveAndFlush(feedbackModel),
+        var feedback = feedbackMapper.toFeedbackDto(feedbackRepository.saveAndFlush(feedbackModel),
                 getBadgeUrl(feedbackModel.getBadgeId()));
         userService.saveNewUserIfNotExist(feedback.getUserId());
-        userService.generateUserNickname(feedback.getUserId());
+        userService.updateUserNickname(getFeedbacksAsList(feedback.getUserId().toString()), feedback.getUserId());
         userService.addRewardPoints(feedback.getUserId(), feedback.getRewardPoints());
         return feedback;
+    }
+
+    private List<String> getFeedbacksAsList(String userId) {
+        return getUserFeedbacks(userId)
+                .stream().map(FeedbackDto::getComment)
+                .collect(Collectors.toList());
     }
 
     private String getBadgeUrl(Long badgeId) {

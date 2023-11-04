@@ -7,6 +7,7 @@ import trainual.userservice.dto.FeedbackDto;
 import trainual.userservice.dto.FeedbackRequestDto;
 import trainual.userservice.service.FeedbackService;
 
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -29,7 +30,7 @@ public class FeedbackController {
     }
 
     @PutMapping("/")
-    public ResponseEntity<FeedbackDto> putFeedback(@RequestBody FeedbackRequestDto requestDto) {
+    public ResponseEntity<FeedbackDto> putFeedback(@RequestBody FeedbackRequestDto requestDto) throws IOException {
         var feedback = feedbackService.saveFeedback(requestDto);
         return ResponseEntity.ok(feedback);
     }
