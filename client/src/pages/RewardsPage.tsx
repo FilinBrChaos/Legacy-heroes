@@ -68,7 +68,9 @@ const RewardsPage = ({ userPointsData = 153 }: { userPointsData?: number }) => {
 
   useEffect(() => {
     window.addEventListener('scroll', getPageOffsetTop);
-    return ()=>{ window.removeEventListener('scroll', getPageOffsetTop);}
+    return () => {
+      window.removeEventListener('scroll', getPageOffsetTop);
+    };
   }, []);
 
   const handleGetReward = () => {
@@ -89,7 +91,7 @@ const RewardsPage = ({ userPointsData = 153 }: { userPointsData?: number }) => {
             color: 'gray',
             backgroundColor: '#f1f1f1',
             mr: '20px',
-            disabled: true
+            disabled: true,
           };
 
     return (
@@ -105,7 +107,12 @@ const RewardsPage = ({ userPointsData = 153 }: { userPointsData?: number }) => {
             </Typography>
           </CardContent>
           <CardActions>
-            <Button size="small" sx={buttonStyles} onClick={()=>handleClickOpen(points)} disabled={!(userPoints > points)}>
+            <Button
+              size="small"
+              sx={buttonStyles}
+              onClick={() => handleClickOpen(points)}
+              disabled={!(userPoints > points)}
+            >
               Get
             </Button>
             <Typography variant="body2" color="text.secondary">

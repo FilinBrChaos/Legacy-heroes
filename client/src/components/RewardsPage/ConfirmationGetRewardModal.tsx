@@ -10,11 +10,11 @@ import DialogTitle from '@mui/material/DialogTitle';
 
 interface Props {
   open: boolean;
-  handleClose: ()=>void
-  handleGetReward: any
+  handleClose: () => void;
+  handleGetReward: any;
 }
 
-export function ConfirmationGetRewardModal({ open, handleClose, handleGetReward }:Props) {
+export function ConfirmationGetRewardModal({ open, handleClose, handleGetReward }: Props) {
   return (
     <>
       <Dialog
@@ -25,9 +25,7 @@ export function ConfirmationGetRewardModal({ open, handleClose, handleGetReward 
       >
         <DialogTitle id="alert-dialog-title">{"Use Google's location service?"}</DialogTitle>
         <DialogContent>
-          <DialogContentText id="alert-dialog-description">
-            Confirm your choice
-          </DialogContentText>
+          <DialogContentText id="alert-dialog-description">Confirm your choice</DialogContentText>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Go back</Button>
