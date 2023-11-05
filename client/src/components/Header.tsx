@@ -1,4 +1,4 @@
-import { useDispatch } from 'react-redux';
+import {useDispatch} from 'react-redux';
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -10,7 +10,7 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
-import { TextField } from '@mui/material';
+import {TextField} from '@mui/material';
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -26,16 +26,16 @@ const Header = () => {
   };
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+    <Box sx={{flexGrow: 1}}>
+      <AppBar position="fixed" sx={{backgroundColor: '#f1f1f1', color: 'black', zIndex: '10000', width: '100%'}}>
         <Toolbar>
-          <IconButton size="large" edge="start" aria-label="menu" sx={{ mr: 2 }}>
-            <MenuIcon />
+          <IconButton size="large" edge="start" aria-label="menu" sx={{mr: 2}}>
+            <MenuIcon/>
           </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          <Typography variant="h6" component="div" sx={{flexGrow: 1}}>
             Photos
           </Typography>
-          <SearchIcon />
+          <SearchIcon/>
           <div>
             <IconButton
               size="large"
@@ -45,7 +45,7 @@ const Header = () => {
               onClick={handleMenu}
               color="inherit"
             >
-              <AccountCircle />
+              <AccountCircle/>
             </IconButton>
             <Menu
               id="menu-appbar"

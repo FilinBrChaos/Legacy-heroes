@@ -1,6 +1,6 @@
 import { combineReducers } from '@reduxjs/toolkit';
-import counterReducer from './rewardCounter';
-import { feedbackSliceReducer } from './Feedback';
+import counterReducer from './slices/rewardCounter';
+import { feedbackSliceReducer } from './slices/feedback';
 
 export const rootReducer = combineReducers({
   counter: counterReducer,

@@ -1,12 +1,22 @@
 import { Box, Divider, Typography, Container, Grid } from '@mui/material';
-import { useState } from 'react';
+import {useEffect, useState} from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { User } from '../utils/types';
 import { UserCard } from './UserCard';
+import {getAllFeedbacks} from "../store/thunks/feedback";
+import {useDispatch} from "react-redux";
+import { useAppDispatch } from '../store';
 
 const MainContent = () => {
   const users = useLoaderData() as [User];
   const [ currentUser, setCurrentUser ] = useState<User>(users[0]);
+  const dispatch = useAppDispatch();
+
+  const handleUserCardClick = (user: User)=>{
+    setCurrentUser(user)
+    dispatch(getAllFeedbacks(user.id));
+  }
+
   return (
     <Grid container sx={{ w: '100%', h: '100%' }}>
       <Grid item xs={8}>
@@ -14,7 +24,7 @@ const MainContent = () => {
           <Typography variant="h4">Directory</Typography>
           <Typography>Share your directory with your whole team to help them get to know each other.</Typography>
           <Box display="flex" flexDirection="row" flexWrap="wrap" marginTop="40px">
-            {users.map((user, indx) => <UserCard key={indx} user={user} onClick={() => setCurrentUser(user)} />)}
+            {users.map((user, indx) => <UserCard key={indx} user={user} onClick={() => handleUserCardClick(user)} />)}
           </Box>
         </Box>
       </Grid>
