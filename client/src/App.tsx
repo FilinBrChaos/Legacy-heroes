@@ -12,11 +12,9 @@ const router = createBrowserRouter([
     },
   },
   {
-    path: '/rewards',
+    path: "/rewards",
     element: <RewardsPage />,
-    loader: () => {
-      return '';
-    },
+    loader: () => { return '' },
   },
 ]);
 
