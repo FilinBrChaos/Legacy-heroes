@@ -21,4 +21,5 @@ gradle clean build
 gradle bootRun
 ```
 
-use ```misc/user-service-hackaton.postman_collection.json``` for postman requests
+Use ```misc/user-service-hackaton.postman_collection.json``` for postman requests
+Change url value in collection variables to "https://feedback-serv-hackaton-back-e4f96a1dac88.herokuapp.com" if you need to test deployed version.
