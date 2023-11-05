@@ -22,15 +22,15 @@ const MainContent = () => {
         <Box sx={{ p: '20px' }}>
           <Box display="flex" alignItems="center" flexDirection="column">
             <Box sx={{ overflow: 'hidden',
-              minWidth: '150px', 
-              minHeight: '150px', 
-              maxHeight: '150px', 
-              maxWidth: '150px', 
+              minWidth: '150px',
+              minHeight: '150px',
+              maxHeight: '150px',
+              maxWidth: '150px',
               borderRadius: 999,
               boxShadow: 2,
               mt: '50px' }}>
-                <img style={{ width: '150px', height: '150px' }} src={currentUser?.avatar} />
-              </Box>
+              <img style={{ width: '150px', height: '150px' }} src={currentUser?.avatar} />
+            </Box>
             <Typography variant='h5' marginTop="20px">{currentUser?.name}</Typography>
             <Typography marginTop="5px">{currentUser?.title}</Typography>
           </Box>

@@ -7,7 +7,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
-    loader: async () => { 
+    loader: async () => {
       return users;
     },
   },
