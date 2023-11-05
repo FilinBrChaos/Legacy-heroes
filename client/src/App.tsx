@@ -7,14 +7,16 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
-    loader: async () => { 
+    loader: async () => {
       return users;
     },
   },
   {
-    path: "/rewards",
+    path: '/rewards',
     element: <RewardsPage />,
-    loader: () => { return '' },
+    loader: () => {
+      return '';
+    },
   },
 ]);
 
