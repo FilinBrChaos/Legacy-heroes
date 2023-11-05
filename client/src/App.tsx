@@ -1,12 +1,15 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { Root } from './components/Root';
 import RewardsPage from "./pages/RewardsPage";
+import users from "./mocked data/users.json";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
-    loader: () => { return '' },
+    loader: async () => { 
+      return users;
+    },
   },
   {
     path: "/rewards",

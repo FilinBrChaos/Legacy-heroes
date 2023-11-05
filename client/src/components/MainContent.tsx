@@ -1,29 +1,44 @@
 import { Box, Divider, Typography, Container, Grid } from '@mui/material';
+import { useState } from 'react';
+import { useLoaderData } from 'react-router-dom';
+import { User } from '../utils/types';
+import { UserCard } from './UserCard';
 
 const MainContent = () => {
-  const user = {
-    name: 'Username',
-    work: 'UserWork',
-    phone: '923828374',
-    email: 'example@gmail.com'
-  }
+  const users = useLoaderData() as [User];
+  const [ currentUser, setCurrentUser ] = useState<User>(users[0]);
   return (
     <Grid container sx={{ w: '100%', h: '100%' }}>
       <Grid item xs={8}>
-        <Box sx={{ pt: '10vh', pl: '4vw' }}>
-          <h3>Directory</h3>
+        <Box sx={{ pt: '10vh', pl: '4vw', backgroundColor: '#f9f9f9', minHeight: '1000px' }}>
+          <Typography variant="h4">Directory</Typography>
           <Typography>Share your directory with your whole team to help them get to know each other.</Typography>
+          <Box display="flex" flexDirection="row" flexWrap="wrap" marginTop="40px">
+            {users.map((user, indx) => <UserCard key={indx} user={user} onClick={() => setCurrentUser(user)} />)}
+          </Box>
         </Box>
       </Grid>
       <Grid item xs={4}>
-        <Box sx={{ backgroundColor: 'gray' }}>
+        <Box sx={{ p: '20px' }}>
           <Box display="flex" alignItems="center" flexDirection="column">
-            <Box sx={{ backgroundColor: 'black', minWidth: '100px', minHeight: '100px', maxHeight: '100px', maxWidth: '100px', borderRadius: 999 }}></Box>
-            <Typography>Username</Typography>
-            <Typography>User work</Typography>
+            <Box sx={{ overflow: 'hidden',
+              minWidth: '150px', 
+              minHeight: '150px', 
+              maxHeight: '150px', 
+              maxWidth: '150px', 
+              borderRadius: 999,
+              boxShadow: 2,
+              mt: '50px' }}>
+                <img style={{ width: '150px', height: '150px' }} src={currentUser?.avatar} />
+              </Box>
+            <Typography variant='h5' marginTop="20px">{currentUser?.name}</Typography>
+            <Typography marginTop="5px">{currentUser?.title}</Typography>
           </Box>
-          <Divider />
-          
+          <Divider sx={{ my: "20px" }} />
+          <Typography>Phone: +380 73 432 4300</Typography>
+          <Typography>Email: google.email@gmail.com</Typography>
+          <Divider sx={{ my: "20px" }} />
+          <Typography>Feedback</Typography>
         </Box>
       </Grid>
     </Grid>
