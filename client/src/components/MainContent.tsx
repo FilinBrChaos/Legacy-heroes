@@ -6,6 +6,7 @@ import { UserCard } from './UserCard';
 import {getAllFeedbacks} from "../store/thunks/feedback";
 import {useDispatch} from "react-redux";
 import { useAppDispatch } from '../store';
+import {FeedbackComponent} from "./Feedback/Feedback";
 
 const MainContent = () => {
   const users = useLoaderData() as [User];
@@ -49,6 +50,7 @@ const MainContent = () => {
           <Typography>Email: google.email@gmail.com</Typography>
           <Divider sx={{ my: "20px" }} />
           <Typography>Feedback</Typography>
+          <FeedbackComponent id={1} createDate={''} comment={'blah-bla-bla'} userId={206006} />
         </Box>
       </Grid>
     </Grid>
