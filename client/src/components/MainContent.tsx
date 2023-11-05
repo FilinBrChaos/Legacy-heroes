@@ -5,8 +5,8 @@ const MainContent = () => {
     name: 'Username',
     work: 'UserWork',
     phone: '923828374',
-    email: 'example@gmail.com'
-  }
+    email: 'example@gmail.com',
+  };
   return (
     <Grid container sx={{ w: '100%', h: '100%' }}>
       <Grid item xs={8}>
@@ -18,12 +18,20 @@ const MainContent = () => {
       <Grid item xs={4}>
         <Box sx={{ backgroundColor: 'gray' }}>
           <Box display="flex" alignItems="center" flexDirection="column">
-            <Box sx={{ backgroundColor: 'black', minWidth: '100px', minHeight: '100px', maxHeight: '100px', maxWidth: '100px', borderRadius: 999 }}></Box>
+            <Box
+              sx={{
+                backgroundColor: 'black',
+                minWidth: '100px',
+                minHeight: '100px',
+                maxHeight: '100px',
+                maxWidth: '100px',
+                borderRadius: 999,
+              }}
+            ></Box>
             <Typography>Username</Typography>
             <Typography>User work</Typography>
           </Box>
           <Divider />
-          
         </Box>
       </Grid>
     </Grid>

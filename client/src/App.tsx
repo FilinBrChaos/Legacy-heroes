@@ -1,17 +1,21 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { Root } from './components/Root';
-import RewardsPage from "./pages/RewardsPage";
+import RewardsPage from './pages/RewardsPage';
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <Root />,
-    loader: () => { return '' },
+    loader: () => {
+      return '';
+    },
   },
   {
-    path: "/rewards",
+    path: '/rewards',
     element: <RewardsPage />,
-    loader: () => { return '' },
+    loader: () => {
+      return '';
+    },
   },
 ]);
 
