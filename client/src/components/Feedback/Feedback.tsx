@@ -3,16 +3,13 @@ import { Box, Button, Grid, TextField } from '@mui/material';
 import { Image } from '@mui/icons-material';
 import Typography from '@mui/material/Typography';
 import * as React from 'react';
+import {Feedback} from "../../utils/types";
+import users from '../../mocked data/users.json';
 
-interface Props {
-  userName: string;
-  comment?: string;
-  reward?: string;
-  points?: number;
-  avatar: string;
-}
-
-export function Feedback({ userName, comment, reward, points, avatar }: Props) {
+export function FeedbackComponent({ id, createDate, userId, comment, badgeUrl, rewardPoints}: Feedback) {
+  const imageUrl = users.find((user) => {
+     return user.id === userId;
+  })?.avatar;
   return (
     <Box sx={{ w: '100vw', h: '100vh' }}>
       <Header />
@@ -24,19 +21,19 @@ export function Feedback({ userName, comment, reward, points, avatar }: Props) {
           </Box>
         </Grid>
         <Grid item xs={10}>
-          {avatar}
-          {userName}
+          <img src={imageUrl}/>
+          {/*{userName}*/}
           {comment && (
             <Typography gutterBottom variant="h5" component="p">
               {comment}
             </Typography>
           )}
-          {reward && reward}
-          {points && (
+          {/*{reward && reward}*/}
+          {/*{points && (*/}
             <Typography gutterBottom variant="h5" component="p">
-              {points}
+              {/*{points}*/}
             </Typography>
-          )}
+          {/*)}*/}
         </Grid>
       </Grid>
     </Box>
