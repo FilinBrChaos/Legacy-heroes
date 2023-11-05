@@ -32,5 +32,5 @@ const feedbackSlice = createSlice({
   },
 });
 
-export const counterActions = feedbackSlice.actions;
+export const feedbackSliceActions = feedbackSlice.actions;
 export const feedbackSliceReducer = feedbackSlice.reducer;

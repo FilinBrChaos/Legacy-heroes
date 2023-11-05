@@ -60,19 +60,6 @@ const RewardsPage = ({ userPointsData = 153 }: { userPointsData?: number }) => {
     setOpen(false);
   };
 
-  const getPageOffsetTop = () => {
-    console.log('pageTopOffset');
-    console.log(pageTopOffset);
-    setPageTopOffset(window.scrollY);
-  };
-
-  useEffect(() => {
-    window.addEventListener('scroll', getPageOffsetTop);
-    return () => {
-      window.removeEventListener('scroll', getPageOffsetTop);
-    };
-  }, []);
-
   const handleGetReward = () => {
     setUserPoints(userPoints - currentUserPoints);
     handleClose();
@@ -135,6 +122,7 @@ const RewardsPage = ({ userPointsData = 153 }: { userPointsData?: number }) => {
           paddingTop: '6px',
           position: 'fixed',
           top: pageTopOffset > 16 ? '0' : '60px',
+          zIndex: '190980'
         }}
       >
         <Typography gutterBottom variant="h5" component="div">
